@@ -18,7 +18,7 @@ export class CalculateZombieItemsTotalPriceHandler {
             const { bid: euroToPolishZlotyRate } = rates.find(rate => rate.code === 'EUR');
             const { bid: usdToPolishZlotyRate } = rates.find(rate => rate.code === 'USD');
 
-            const totalItemsPriceInPolishZloty = zombieItems.reduce((acc, curr) => acc + parseInt(curr.item_price), 0);
+            const totalItemsPriceInPolishZloty = zombieItems.reduce((acc, curr) => acc + parseInt(curr.price), 0);
             const totalItemsPriceInEuro = parseInt((totalItemsPriceInPolishZloty / euroToPolishZlotyRate).toFixed(1));
             const totalItemsPriceInUsd = parseInt((totalItemsPriceInPolishZloty / usdToPolishZlotyRate).toFixed(1));
 
