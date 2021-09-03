@@ -22,5 +22,6 @@ $ npm run seed:run
 
 ```bash
 $ docker-compose --env-file .env.test -f docker-compose.test.yml up -d
+$ npm run test:clearCache (optionally)
 $ npm run test
 ```
