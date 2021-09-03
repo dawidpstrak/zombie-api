@@ -8,8 +8,7 @@ const env = (key, defaultValue = null) => process.env[key] || defaultValue;
 
 export default () => ({
     app: {
-        env: env('NODE_ENV'),
-        secret: env('APP_SECRET')
+        env: env('NODE_ENV')
     },
     itemsApi: {
         url: env('ITEMS_API_URL')
