@@ -22,8 +22,7 @@
         "seed:config": "ts-node ./node_modules/typeorm-seeding/dist/cli.js config",
         "seed:run": "ts-node ./node_modules/typeorm-seeding/dist/cli.js seed",
         "schema:drop": "ts-node ./node_modules/typeorm/cli.js schema:drop",
-        "schema:sync": "ts-node ./node_modules/typeorm/cli.js schema:sync",
-        "heroku-postbuild": "npm run build"
+        "schema:sync": "ts-node ./node_modules/typeorm/cli.js schema:sync"
     },
     "dependencies": {
         "@hapi/joi": "^17.1.1",
@@ -44,10 +43,10 @@
         "rxjs": "^7.2.0",
         "swagger-ui-express": "^4.1.6",
         "typeorm": "^0.2.37",
-        "typeorm-seeding": "^1.6.1",
-        "@nestjs/cli": "^8.0.0"
+        "typeorm-seeding": "^1.6.1"
     },
     "devDependencies": {
+        "@nestjs/cli": "^8.0.0",
         "@nestjs/schematics": "^8.0.0",
         "@nestjs/testing": "^8.0.0",
         "@types/cron": "^1.7.3",
