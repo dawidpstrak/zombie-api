@@ -13,20 +13,6 @@ describe('Item Controller', () => {
         await testService.seedItems();
     });
 
-    it(`GET /api/items/`, async () => {
-        const zombie = await testService.createZombie('Test zombie');
-
-        await testService.createZombieItem(zombie.id);
-
-        const {
-            status,
-            body: { items }
-        } = await testService.api.get('/api/items').send({ zombieId: zombie.id });
-
-        expect(status).toEqual(HttpStatus.OK);
-        expect(items).toHaveLength(1);
-    });
-
     it(`POST /api/items/`, async () => {
         const zombie = await testService.createZombie('Test zombie');
 
@@ -34,6 +20,23 @@ describe('Item Controller', () => {
 
         expect(status).toEqual(HttpStatus.CREATED);
         expect(item).toHaveProperty('id');
+    });
+
+    it(`GET /api/items/zombie/:id`, async () => {
+        const zombie = await testService.createZombie('Test zombie');
+
+        await testService.createZombieItem(zombie.id);
+
+        const {
+            status,
+            body: { items, totalPrice }
+        } = await testService.api.get(`/api/items/zombie/${zombie.id}`);
+
+        expect(status).toEqual(HttpStatus.OK);
+        expect(items).toHaveLength(1);
+        expect(totalPrice).toHaveProperty('PLN');
+        expect(totalPrice).toHaveProperty('EUR');
+        expect(totalPrice).toHaveProperty('USD');
     });
 
     it(`DELETE /api/items/`, async () => {
@@ -48,7 +51,7 @@ describe('Item Controller', () => {
 
         const {
             body: { items }
-        } = await testService.api.get('/api/items').send({ zombieId: zombie.id });
+        } = await testService.api.get(`/api/items/zombie/${zombie.id}`);
 
         expect(items).toHaveLength(0);
     });

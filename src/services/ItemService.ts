@@ -29,7 +29,7 @@ export class ItemService {
             throw new NotFoundException();
         }
 
-        const zombieItems = await this.zombieItemRepository.find({ where: { zombie } });
+        const zombieItems = await this.zombieItemRepository.find({ relations: ['item'], where: { zombie } });
 
         const rawZombieItems = zombieItems.map(zombieItem => zombieItem.item);
 
